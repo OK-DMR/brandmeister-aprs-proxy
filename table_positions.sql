@@ -1,7 +1,7 @@
 CREATE TABLE `Positions` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `DMRID` int(11) NOT NULL,
-  `Master` varchar(255) NOT NULL DEFAULT '',
+  `Master` int(11) NOT NULL,
   `Latitude` double unsigned NOT NULL,
   `Longitude` double unsigned NOT NULL,
   `Speed` int(10) unsigned DEFAULT NULL,

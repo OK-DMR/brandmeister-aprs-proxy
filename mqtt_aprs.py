@@ -18,6 +18,7 @@ with open("/opt/APRSProxy/settings.ini") as f:
 
 # constants
 mqtt_channel = config['mqtt']['channel']
+mqtt_master = config['mqtt']['master']
 aprs_call = config['aprs']['call']
 aprs_filter = config['aprs']['filter'].encode()
 aprs_destination = config['aprs']['destination']
@@ -93,7 +94,7 @@ def on_message(client, userdata, message):
 		sql = "INSERT INTO Positions (`ID`,`DMRID`,`Master`,`Latitude`,`Longitude`,`Speed`,`Course`,`Altitude`) VALUES (null,%s,%s,%s,%s,%s,%s,%s)"
 		altitude = message.payload['Altitude']
 		altitude = altitude if altitude and altitude.isdigit() else 0
-		vals = (message.payload['SourceID'],mqtt_channel,message.payload['Latitude'],message.payload['Longitude'],message.payload['Speed'],message.payload['Course'],altitude)
+		vals = (message.payload['SourceID'],mqtt_master,message.payload['Latitude'],message.payload['Longitude'],message.payload['Speed'],message.payload['Course'],altitude)
 		with sqlcon.cursor() as cursor:
 			cursor.execute(sql, vals)
 		sqlcon.commit()
