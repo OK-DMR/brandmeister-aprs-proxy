@@ -19,6 +19,8 @@ with open("/opt/APRSProxy/settings.ini") as f:
 # constants
 mqtt_channel = config['mqtt']['channel']
 mqtt_master = config['mqtt']['master']
+mqtt_host = config['mqtt']['host']
+mqtt_port = config['mqtt']['port']
 aprs_call = config['aprs']['call']
 aprs_filter = config['aprs']['filter'].encode()
 aprs_destination = config['aprs']['destination']
@@ -115,7 +117,7 @@ if __name__ == "__main__":
 	mqtt_con.on_message = on_message
 	mqtt_con.on_disconnect = on_disconnect
 
-	mqtt_con.connect_async('127.0.0.1', 1883)
+	mqtt_con.connect_async(mqtt_host, mqtt_port)
 	# blocking call
 	print("MQTT loop start")
 	mqtt_con.loop_forever()

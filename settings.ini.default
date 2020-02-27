@@ -14,6 +14,8 @@ dbpass=
 [mqtt]
 channel=Master/1234/Service/Location-Report
 master=1234
+host=127.0.0.1
+port=1883
 
 [aprs]
 call=
