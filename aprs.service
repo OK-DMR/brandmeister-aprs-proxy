@@ -1,0 +1,15 @@
+[Unit]
+Description=BrandMeister to APRS proxy
+After=network.target mariadb.service mosquitto.service
+
+[Service]
+Type=simple
+ExecStart=/opt/APRSProxy/mqtt_aprs.py
+Restart=always
+RestartSec=20
+StandardOutput=syslog
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
