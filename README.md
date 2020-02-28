@@ -4,7 +4,7 @@
 ```
 cd /opt
 git clone https://github.com/smarek/brandmeister-aprs-proxy APRSProxy
-apt-get install python3 python3-paho-mqtt
+apt-get install python3 python3-paho-mqtt python3-pip
 pip3 install -r requirements.txt
 cp settings.ini.default settings.ini
 // update settings.ini with required configuration
