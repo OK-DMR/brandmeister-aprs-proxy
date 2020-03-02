@@ -18,9 +18,9 @@ with open("/opt/APRSProxy/settings.ini") as f:
 
 # constants
 mqtt_channel = config['mqtt']['channel']
-mqtt_master = config['mqtt']['master']
+mqtt_master = int(config['mqtt']['master'])
 mqtt_host = config['mqtt']['host']
-mqtt_port = config['mqtt']['port']
+mqtt_port = int(config['mqtt']['port'])
 aprs_call = config['aprs']['call']
 aprs_filter = config['aprs']['filter'].encode()
 aprs_destination = config['aprs']['destination']
@@ -110,7 +110,7 @@ if __name__ == "__main__":
 	print("APRS connect start")
 	aprs_con.start()
 
-	tnt_con = tarantool.connect(config['tarantool']['dbhost'], config['tarantool']['dbport'], config['tarantool']['dbuser'], config['tarantool']['dbpass'])
+	tnt_con = tarantool.connect(config['tarantool']['dbhost'], int(config['tarantool']['dbport']), config['tarantool']['dbuser'], config['tarantool']['dbpass'])
 
 	mqtt_con = mqtt.Client()
 	mqtt_con.on_connect = on_connect
